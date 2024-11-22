@@ -14,11 +14,13 @@ public class WeakDemo {
 		Map<String,String> itemMap = new WeakHashMap<>();
 
 		System.out.println(itemMap.put("a","1111"));
+		System.out.println(map.put("1",itemMap));
+		System.out.println(map.toString());
 		System.out.println(itemMap.put("a","1111"));
-		System.out.println(itemMap.put("a","222"));
+		System.out.println(itemMap.put("a", "222"));
+		System.out.println(map.toString());
 		System.out.println(itemMap.put("a","22332"));
 
-//		System.out.println(map.put("1",itemMap));
 //		System.out.println(map.put("1",itemMap));
 //		System.out.println(itemMap.toString());
 //		System.gc();

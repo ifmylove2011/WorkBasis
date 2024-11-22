@@ -1,4 +1,4 @@
-package com.xter.algorithm.exercise;
+package com.xter.algorithm.leetcode;
 
 import java.util.Arrays;
 
@@ -11,9 +11,10 @@ import java.util.Arrays;
 public class ArrayShiftCircle {
 
 	public static void main(String[] args) {
+//		char[] src = generateArray();
 		char[] src = generateArray();
 //		shiftCircle(src,9);
-		shiftCircleX(src,9);
+		shiftCircleX(src,3);
 		System.out.println(Arrays.toString(src));
 	}
 
@@ -31,7 +32,9 @@ public class ArrayShiftCircle {
 		int size = src.length;
 		k = k%size;
 		reverse(src,0,size-k-1);
+		System.out.println(Arrays.toString(src));
 		reverse(src,size-k,size-1);
+		System.out.println(Arrays.toString(src));
 		reverse(src,0,size-1);
 	}
 
@@ -57,6 +60,7 @@ public class ArrayShiftCircle {
 
 	private static char[] generateArray() {
 		String src = "abcd1234";
+//		String src = "12";
 		return src.toCharArray();
 	}
 }

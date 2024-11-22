@@ -23,14 +23,30 @@ public class RemoveEquals {
 		list2.add(new Node(7, "b7"));
 		list2.add(new Node(8, "b8"));
 
-		list1.retainAll(list2);
+		List<Node> list3 = new ArrayList<>();
+		list3.add(new Node(1, "a1"));
+		list3.add(new Node(2, "a2"));
+		list3.add(new Node(3, "a3"));
+		list3.add(new Node(4, "a4"));
+		list3.add(new Node(5, "a5"));
+
+//		list1.retainAll(list2);
+//		System.out.println(list1);
+		list1.removeAll(list3);
 		System.out.println(list1);
+		try{
+			System.out.println("--------");
+			return;
+		}catch (Exception e){
+			e.printStackTrace();
+		}
 		list2.removeAll(list1);
 		System.out.println(list2);
 		list1.addAll(list2);
 		System.out.println(list1);
 
 		System.out.println(0x00000630+"");
+		System.out.println(list1);
 
 	}
 

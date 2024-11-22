@@ -23,11 +23,12 @@ public class LinkedQueueDemo {
 			public void run() {
 				int count = 0;
 				while (true){
-					try {
-						queue.put(count);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+//					try {
+						if(queue.offer(count))
+						System.out.println("puting -"+queue.size());
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
 //					try {
 //						TimeUnit.MILLISECONDS.sleep(200);
 //					} catch (InterruptedException e) {
@@ -47,6 +48,7 @@ public class LinkedQueueDemo {
 					try {
 						//一直去拿消息，拿不到就阻塞
 						System.out.println(queue.take());
+						TimeUnit.MILLISECONDS.sleep(500);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}

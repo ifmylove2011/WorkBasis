@@ -29,10 +29,8 @@ public class NettyServer {
 							ch.pipeline().addLast(new NormalServerHandler());
 						}
 					});
-			serverBootstrap.localAddress(8899);
 
-			ChannelFuture channelFuture = serverBootstrap.bind();
-			L.d("done?");
+			ChannelFuture channelFuture = serverBootstrap.bind(2404).sync();
 
 			channelFuture.channel().closeFuture().sync();
 			L.d("done?");

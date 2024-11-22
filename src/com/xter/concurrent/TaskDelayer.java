@@ -2,6 +2,8 @@ package com.xter.concurrent;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.SynchronousQueue;
@@ -25,10 +27,34 @@ public class TaskDelayer {
 
 	private Map<String, Task> delayMap;
 	private ScheduledExecutorService ses;
+	private BlockingQueue<String> queue;
 
 	private TaskDelayer() {
 		delayMap = new HashMap<>();
 		ses = new ScheduledThreadPoolExecutor(4);
+		queue = new LinkedBlockingQueue<>(10);
+	}
+
+	public void reviewQueue(){
+		ses.execute(new Runnable() {
+			@Override
+			public void run() {
+				while (true){
+					try {
+						String s  = queue.take();
+						System.out.println(s);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+	}
+
+	public void addQueue(String e){
+		if (!queue.offer(e)) {
+			System.out.println("----error");
+		}
 	}
 
 	public void throttleLastestTask(String key, Runnable task){

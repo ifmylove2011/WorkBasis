@@ -31,7 +31,7 @@ public class SyncQueueDemo {
 			public void run() {
 				int i=0;
 				while (true){
-					System.out.println(i++);
+					System.out.println("time:"+(++i));
 					try {
 						TimeUnit.SECONDS.sleep(1);
 					} catch (InterruptedException e) {
@@ -44,27 +44,27 @@ public class SyncQueueDemo {
 			@Override
 			public void run() {
 				for (int i = 0; i < 30; i++) {
-					System.out.println("------"+i);
+					System.out.println("1------"+i);
 					TaskDelayer.get().throttleLastestTask("1", task1);
-//					try {
-//						TimeUnit.MILLISECONDS.sleep(200);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
+					try {
+						TimeUnit.MILLISECONDS.sleep(200);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}).start();
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				for (int i = 0; i <10; i++) {
-					System.out.println("+++++++++"+i);
+				for (int i = 0; i <3; i++) {
+					System.out.println("2+++++++++"+i);
 					TaskDelayer.get().throttleLastestTask("2", task2);
-//					try {
-//						TimeUnit.MILLISECONDS.sleep(500);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
+					try {
+						TimeUnit.MILLISECONDS.sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}).start();
