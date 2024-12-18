@@ -14,7 +14,7 @@ public class NodeReverse {
 
 	public static void main(String[] args) {
 		Node origin = generateNode();
-		reverse1(origin);
+		reverse2(origin);
 
 		while (origin.next != null) {
 			origin = origin.next;
